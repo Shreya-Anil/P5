@@ -1,0 +1,448 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SkillBridge - Flexbox Layout</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f4ff;
+            color: #29294a;
+        }
+
+        /* Header */
+        header {
+            background: #ffffff;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .logo {
+            color: #6554d9;
+            font-size: 27px;
+            font-weight: bold;
+        }
+
+        /* Navigation using Flexbox */
+        nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #33334f;
+            font-weight: bold;
+            padding: 10px;
+            display: block;
+        }
+
+        nav ul li a:hover {
+            color: #6554d9;
+        }
+
+        /* Dropdown menu */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 170px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu li a {
+            padding: 12px 15px;
+        }
+
+        .dropdown-menu li a:hover {
+            background: #eeeaff;
+        }
+
+        /* Hero section */
+        .hero {
+            background: linear-gradient(120deg, #6554d9, #9479f5);
+            color: white;
+            padding: 65px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 17px;
+            line-height: 1.6;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .hero button {
+            margin-top: 25px;
+            padding: 13px 25px;
+            border: none;
+            border-radius: 8px;
+            background: white;
+            color: #6554d9;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .hero button:hover {
+            background: #eeeaff;
+        }
+
+        /* Main content */
+        .container {
+            max-width: 1100px;
+            margin: 45px auto;
+            padding: 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+            color: #6554d9;
+        }
+
+        /* Mentor cards using CSS Grid */
+        .mentor-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .mentor-card {
+            background: white;
+            padding: 25px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+        }
+
+        .mentor-card:hover {
+            transform: translateY(-7px);
+        }
+
+        .mentor-icon {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            background: #e8e3ff;
+            color: #6554d9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            font-weight: bold;
+            margin: 0 auto 15px;
+        }
+
+        .mentor-card h3 {
+            color: #29294a;
+            margin-bottom: 10px;
+        }
+
+        .mentor-card p {
+            color: #77778c;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .mentor-card button {
+            background: #6554d9;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .mentor-card button:hover {
+            background: #4938bd;
+        }
+
+        /* Benefits section using Flexbox */
+        .benefits {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            background: white;
+            padding: 30px;
+            margin-top: 40px;
+            border-radius: 15px;
+        }
+
+        .benefit {
+            text-align: center;
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .benefit h3 {
+            color: #6554d9;
+            margin-bottom: 8px;
+        }
+
+        .benefit p {
+            color: #77778c;
+        }
+
+        /* Footer */
+        footer {
+            background: #29294a;
+            color: white;
+            text-align: center;
+            padding: 22px;
+            margin-top: 40px;
+        }
+
+        /* Responsive layout */
+        @media (max-width: 800px) {
+
+            .mentor-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            header {
+                justify-content: center;
+            }
+
+        }
+
+        @media (max-width: 550px) {
+
+            header {
+                flex-direction: column;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .dropdown-menu {
+                position: static;
+            }
+
+            .mentor-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+
+        <div class="logo">SkillBridge</div>
+
+        <nav>
+
+            <ul>
+
+                <li><a href="#">Home</a></li>
+
+                <li class="dropdown">
+
+                    <a href="#">Explore ▼</a>
+
+                    <ul class="dropdown-menu">
+
+                        <li><a href="#mentors">Find Mentors</a></li>
+                        <li><a href="#benefits">Our Benefits</a></li>
+                        <li><a href="#contact">Contact</a></li>
+
+                    </ul>
+
+                </li>
+
+                <li><a href="#mentors">Mentors</a></li>
+
+                <li><a href="#contact">Contact</a></li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <!-- Welcome Section -->
+    <section class="hero">
+
+        <h1>Connect. Learn. Grow.</h1>
+
+        <p>
+            Welcome to SkillBridge! Connect with experienced industry
+            mentors, learn valuable skills and build your professional future.
+        </p>
+
+        <button onclick="showMessage()">
+            Explore SkillBridge
+        </button>
+
+    </section>
+
+    <!-- Mentor Section -->
+    <main class="container" id="mentors">
+
+        <h2 class="section-title">Meet Our Mentors</h2>
+
+        <section class="mentor-grid">
+
+            <div class="mentor-card">
+
+                <div class="mentor-icon">A</div>
+
+                <h3>Arjun Kumar</h3>
+
+                <p>
+                    Software Developer<br>
+                    Web Development Expert
+                </p>
+
+                <button onclick="viewMentor('Arjun Kumar')">
+                    View Profile
+                </button>
+
+            </div>
+
+            <div class="mentor-card">
+
+                <div class="mentor-icon">P</div>
+
+                <h3>Priya Sharma</h3>
+
+                <p>
+                    UI/UX Designer<br>
+                    Design Specialist
+                </p>
+
+                <button onclick="viewMentor('Priya Sharma')">
+                    View Profile
+                </button>
+
+            </div>
+
+            <div class="mentor-card">
+
+                <div class="mentor-icon">R</div>
+
+                <h3>Rahul Verma</h3>
+
+                <p>
+                    Data Analyst<br>
+                    Data Science Expert
+                </p>
+
+                <button onclick="viewMentor('Rahul Verma')">
+                    View Profile
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="benefits" id="benefits">
+
+            <div class="benefit">
+
+                <h3>Learn</h3>
+
+                <p>Develop new technical skills.</p>
+
+            </div>
+
+            <div class="benefit">
+
+                <h3>Connect</h3>
+
+                <p>Meet experienced professionals.</p>
+
+            </div>
+
+            <div class="benefit">
+
+                <h3>Grow</h3>
+
+                <p>Build your career confidently.</p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact">
+
+        <p>© 2026 SkillBridge | Connecting Learners with Mentors</p>
+
+    </footer>
+
+    <script>
+
+        // Display welcome message
+        function showMessage() {
+
+            alert("Welcome to SkillBridge! Start your learning journey.");
+
+        }
+
+        // Display mentor information
+        function viewMentor(name) {
+
+            alert("You selected mentor: " + name);
+
+        }
+
+    </script>
+
+</body>
+</html>
